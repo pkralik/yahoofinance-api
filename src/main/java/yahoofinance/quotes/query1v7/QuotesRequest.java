@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import yahoofinance.Utils;
 import yahoofinance.YahooFinance;
+import yahoofinance.histquotes2.CrumbManager;
 import yahoofinance.util.RedirectableRequest;
 
 import java.io.IOException;
@@ -59,6 +60,7 @@ public abstract class QuotesRequest<T> {
 
         Map<String, String> params = new LinkedHashMap<String, String>();
         params.put("symbols", this.symbols);
+        params.put("crumb", CrumbManager.getCrumb());
 
         String url = YahooFinance.QUOTES_QUERY1V7_BASE_URL + "?" + Utils.getURLParameters(params);
 
